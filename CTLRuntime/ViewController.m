@@ -8,22 +8,25 @@
 
 #import "ViewController.h"
 
+#import "WorkingWithClasses.h"
+
+
 @interface ViewController ()
 
+@property (nonatomic) WorkingWithClasses *workingWithClasses;
+
 @end
+
 
 @implementation ViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading th e view, typically from a nib.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.view.backgroundColor = [UIColor whiteColor];
+
+    _workingWithClasses = [[WorkingWithClasses alloc] init];
 }
 
 @end

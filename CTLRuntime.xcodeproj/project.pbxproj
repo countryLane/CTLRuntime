@@ -13,6 +13,7 @@
 		B02480301D3220E1003503C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B024802E1D3220E1003503C6 /* Main.storyboard */; };
 		B02480321D3220E1003503C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02480311D3220E1003503C6 /* Assets.xcassets */; };
 		B02480351D3220E1003503C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B02480331D3220E1003503C6 /* LaunchScreen.storyboard */; };
+		B024803F1D323A3C003503C6 /* WorkingWithClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = B024803E1D323A3C003503C6 /* WorkingWithClasses.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		B02480311D3220E1003503C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02480341D3220E1003503C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B02480361D3220E1003503C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B024803D1D323A2C003503C6 /* WorkingWithClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingWithClasses.h; sourceTree = "<group>"; };
+		B024803E1D323A3C003503C6 /* WorkingWithClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingWithClasses.m; sourceTree = "<group>"; };
+		B02480411D323E08003503C6 /* CTLRuntime-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CTLRuntime-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 				B02480311D3220E1003503C6 /* Assets.xcassets */,
 				B02480331D3220E1003503C6 /* LaunchScreen.storyboard */,
 				B02480361D3220E1003503C6 /* Info.plist */,
+				B024803C1D323923003503C6 /* WorkingWithClasses */,
 				B02480251D3220E1003503C6 /* Supporting Files */,
 			);
 			path = CTLRuntime;
@@ -75,8 +80,18 @@
 			isa = PBXGroup;
 			children = (
 				B02480261D3220E1003503C6 /* main.m */,
+				B02480411D323E08003503C6 /* CTLRuntime-prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B024803C1D323923003503C6 /* WorkingWithClasses */ = {
+			isa = PBXGroup;
+			children = (
+				B024803D1D323A2C003503C6 /* WorkingWithClasses.h */,
+				B024803E1D323A3C003503C6 /* WorkingWithClasses.m */,
+			);
+			path = WorkingWithClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +167,7 @@
 			files = (
 				B024802D1D3220E1003503C6 /* ViewController.m in Sources */,
 				B024802A1D3220E1003503C6 /* AppDelegate.m in Sources */,
+				B024803F1D323A3C003503C6 /* WorkingWithClasses.m in Sources */,
 				B02480271D3220E1003503C6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +280,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CTLRuntime/CTLRuntime-prefix.pch";
 				INFOPLIST_FILE = CTLRuntime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.countryLane.CTLRuntime;
@@ -275,6 +293,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CTLRuntime/CTLRuntime-prefix.pch";
 				INFOPLIST_FILE = CTLRuntime/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.countryLane.CTLRuntime;
@@ -301,6 +321,7 @@
 				B024803B1D3220E1003503C6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

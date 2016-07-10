@@ -6,7 +6,6 @@
 //  Copyright © 2016年 王一. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
