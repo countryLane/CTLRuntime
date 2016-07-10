@@ -10,6 +10,8 @@
 
 @interface WorkingWithClasses ()
 
+@property (nonatomic) int index1;
+
 @end
 
 
@@ -21,6 +23,9 @@
         [self getClassName];
         [self getSuperClass];
         [self setSuperClass];
+        [self isMetaClass];
+        [self getInstanceSize];
+        [self getIvar];
     }
     return self;
 }
@@ -41,8 +46,26 @@
 - (void)setSuperClass
 {
     // 文档说明了class_setSuperclass这个函数不应该用，而且在iOS 2.0就废弃了
-    class_setSuperclass([WorkingWithClasses class], [UIView class]);
+    Class originClass = class_setSuperclass([WorkingWithClasses class], [UIView class]);
     [self getSuperClass];
+    class_setSuperclass([WorkingWithClasses class], originClass);
+}
+
+- (void)isMetaClass
+{
+    BOOL workingwithclassesIsMetaClass = class_isMetaClass([WorkingWithClasses class]);
+    NSLog(@"workingwithclassesIsMetaClass : %d", workingwithclassesIsMetaClass);
+}
+
+- (void)getInstanceSize
+{
+    size_t instanceSize = class_getInstanceSize([WorkingWithClasses class]);
+    NSLog(@"%ld", (long)instanceSize);
+}
+
+- (void)getIvar
+{
+    Ivar ivar = class_getInstanceVariable([WorkingWithClasses class], "_index1");
 }
 
 @end
