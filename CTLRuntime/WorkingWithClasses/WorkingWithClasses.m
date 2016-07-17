@@ -8,14 +8,19 @@
 
 #import "WorkingWithClasses.h"
 
+
 @interface WorkingWithClasses ()
 
 @property (nonatomic) int index1;
+@property (nonatomic) NSString *string;
+@property (nonatomic, weak) NSString *weakString;
 
 @end
 
 
 @implementation WorkingWithClasses
+
+static NSInteger count = 1;
 
 - (instancetype)init
 {
@@ -25,7 +30,11 @@
         [self setSuperClass];
         [self isMetaClass];
         [self getInstanceSize];
-        [self getIvar];
+        [self getInstanceIvar];
+        [self getClassIvar];
+        [self getCopyIvarList];
+        [self getIvarLayout];
+        [self getProperty];
     }
     return self;
 }
@@ -63,9 +72,39 @@
     NSLog(@"%ld", (long)instanceSize);
 }
 
-- (void)getIvar
+- (void)getInstanceIvar
 {
-    Ivar ivar = class_getInstanceVariable([WorkingWithClasses class], "_index1");
+    Ivar instanceIvar = class_getInstanceVariable([WorkingWithClasses class], "_index1");
+}
+
+- (void)getClassIvar
+{
+    // 对这个方法感到很奇怪，类变量？难道是static全局变量?
+    Ivar classIvar = class_getClassVariable([WorkingWithClasses class], "");
+}
+
+- (void)getCopyIvarList
+{
+    unsigned count = 0;
+    Ivar *ivarList = class_copyIvarList([WorkingWithClasses class], &count);
+    free(ivarList);
+}
+
+- (void)getIvarLayout
+{
+    const char *ivarLayout = class_getIvarLayout([WorkingWithClasses class]);
+    puts(ivarLayout);
+}
+
+- (void)getProperty
+{
+    objc_property_t property = class_getProperty([WorkingWithClasses class], "string");
+    puts(property);
+}
+
+- (void)addMethod
+{
+    // TODO:addMethod
 }
 
 @end
