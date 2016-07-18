@@ -35,6 +35,7 @@ static NSInteger count = 1;
         [self getCopyIvarList];
         [self getIvarLayout];
         [self getProperty];
+        [self addMethod];
     }
     return self;
 }
@@ -104,7 +105,12 @@ static NSInteger count = 1;
 
 - (void)addMethod
 {
-    // TODO:addMethod
+    class_addMethod([WorkingWithClasses class], @selector(aMethod), (IMP)aMethodIMP, "v@:");
+}
+
+void aMethodIMP(id self, SEL _cmd)
+{
+    puts(__FUNCTION__);
 }
 
 @end
