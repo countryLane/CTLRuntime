@@ -35,6 +35,9 @@ static NSInteger count = 1;
         [self getCopyIvarList];
         [self getIvarLayout];
         [self getProperty];
+        [self addMethod];
+        [self getInstanceMethod];
+        [self replaceMethod];
     }
     return self;
 }
@@ -93,18 +96,43 @@ static NSInteger count = 1;
 - (void)getIvarLayout
 {
     const char *ivarLayout = class_getIvarLayout([WorkingWithClasses class]);
-    puts(ivarLayout);
+    PUTS(cstr2s(ivarLayout));
 }
 
 - (void)getProperty
 {
     objc_property_t property = class_getProperty([WorkingWithClasses class], "string");
-    puts(property);
+    PUTS(cstr2s(property));
 }
 
 - (void)addMethod
 {
-    // TODO:addMethod
+    // TODO:此处types参数还存在一些疑惑，自定义参数和默认参数的顺序
+    class_addMethod([WorkingWithClasses class], @selector(aMethod:), (IMP)aMethodIMPA, "v@:@");
+
+    [self performSelector:@selector(aMethod:) withObject:@"argument"];
+}
+
+void aMethodIMPA(id self, SEL _cmd, NSString *words)
+{
+    PUTS(words);
+}
+
+- (void)getInstanceMethod
+{
+    Method descriptionMethod = class_getInstanceMethod([WorkingWithClasses class], @selector(description));
+}
+
+- (void)replaceMethod
+{
+    class_replaceMethod([WorkingWithClasses class], @selector(aMethod:), (IMP)aMethodIMPB, "v@:");
+
+    [self performSelector:@selector(aMethod:) withObject:nil];
+}
+
+void aMethodIMPB(id self, SEL _cmd)
+{
+    PUTS(@"");
 }
 
 @end

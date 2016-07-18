@@ -22,3 +22,7 @@
 #ifndef cstr2s
 #define cstr2s(cstr) ([NSString stringWithUTF8String:(cstr)])
 #endif
+
+#ifndef PUTS
+#define PUTS(str) (printf("%s => %s\n", __FUNCTION__, str.UTF8String))
+#endif
