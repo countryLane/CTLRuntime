@@ -38,6 +38,9 @@ static NSInteger count = 1;
         [self addMethod];
         [self getInstanceMethod];
         [self replaceMethod];
+        [self getMethodImp];
+        [self respondsTo];
+        [self getViersion];
     }
     return self;
 }
@@ -133,6 +136,22 @@ void aMethodIMPA(id self, SEL _cmd, NSString *words)
 void aMethodIMPB(id self, SEL _cmd)
 {
     PUTS(@"");
+}
+
+- (void)getMethodImp
+{
+    IMP imp = class_getMethodImplementation([WorkingWithClasses class], @selector(replaceMethod));
+    IMP imp2 = class_getMethodImplementation_stret([WorkingWithClasses class], @selector(replaceMethod));
+}
+
+- (void)respondsTo
+{
+    BOOL respond = class_respondsToSelector([WorkingWithClasses class], @selector(getMethodImp));
+}
+
+- (void)getViersion
+{
+    int version = class_getVersion([WorkingWithClasses class]);
 }
 
 @end
