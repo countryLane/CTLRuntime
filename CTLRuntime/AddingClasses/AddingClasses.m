@@ -28,15 +28,21 @@
 
 - (void)addingClass
 {
+    // add Class
     Class AddedClass = objc_allocateClassPair([NSObject class], "AddedClass", 0);
     if (!AddedClass) {
         return;
     }
+    // add Method
     class_addMethod(AddedClass, @selector(aSelectorA), (IMP)aMethodIMPA, "v@:");
     objc_registerClassPair(AddedClass);
 
+    // execute
     id addedClassObject = [[AddedClass alloc] init];
     [addedClassObject performSelector:@selector(aSelectorA)];
+
+    addedClassObject = nil; // Before objc_disposeClassPair, all objects associated with the class must be nil. Otherwise, it'll lead to wild pointer.
+    objc_disposeClassPair(AddedClass); // the life of ddedClass won't be over until app shutdown if objc_disposeClassPair is not called
 }
 
 static void aMethodIMPA(id self, SEL _cmd)
