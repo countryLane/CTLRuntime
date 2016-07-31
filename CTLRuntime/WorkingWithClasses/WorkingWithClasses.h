@@ -6,6 +6,6 @@
 //  Copyright © 2016年 王一. All rights reserved.
 //
 
-@interface WorkingWithClasses : NSObject
+@interface WorkingWithClasses : UIViewController
 
 @end

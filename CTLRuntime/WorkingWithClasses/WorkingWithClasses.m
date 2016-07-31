@@ -45,6 +45,14 @@ static NSInteger count = 1;
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = cstr2s(class_getName(object_getClass(self)));
+}
+
 - (void)getClassName
 {
     NSString *className = cstr2s(class_getName([WorkingWithClasses class]));
@@ -116,7 +124,7 @@ static NSInteger count = 1;
     [self performSelector:@selector(aMethod:) withObject:@"argument"];
 }
 
-void aMethodIMPA(id self, SEL _cmd, NSString *words)
+static void aMethodIMPA(id self, SEL _cmd, NSString *words)
 {
     PUTS(words);
 }
