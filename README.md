@@ -8,3 +8,4 @@
 6. [Message Forwarding](https://github.com/countryLane/CTLRuntime/wiki/6.-Message-Forwarding)
 7. [Type Encodings](https://github.com/countryLane/CTLRuntime/wiki/7.-Type-Encodings)
 8. [Declared Properties](https://github.com/countryLane/CTLRuntime/wiki/8.-Declared-Properties)
+9. [Data Types](https://github.com/countryLane/CTLRuntime/wiki/9.-Data-Types)
